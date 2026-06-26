@@ -1,4 +1,4 @@
-name: Auto Switch 1n Repository
+name: Auto Switch 1N Repository
 
 on:
   schedule:
@@ -8,9 +8,6 @@ on:
 jobs:
   switch:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      administration: write
     steps:
       - name: Check exam time
         id: exam
@@ -25,6 +22,7 @@ jobs:
       - name: Switch repository
         uses: actions/github-script@v7
         with:
+          github-token: ${{ secrets.PAT_TOKEN }}
           script: |
             const isPublic = '${{ steps.exam.outputs.public }}' === 'true';
             await github.rest.repos.update({
