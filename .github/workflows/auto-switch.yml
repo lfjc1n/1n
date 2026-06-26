@@ -1,4 +1,4 @@
-name: Auto Switch 1D Repository
+name: Auto Switch 1N Repository
 
 on:
   schedule:
@@ -9,7 +9,8 @@ jobs:
   switch:
     runs-on: ubuntu-latest
     permissions:
-      administration: write
+      contents: read
+      administration: write  # ← THIS IS REQUIRED!
 
     steps:
       - name: Check exam time
