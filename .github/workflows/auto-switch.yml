@@ -1,4 +1,4 @@
-name: Auto Switch 1N Repository
+name: Auto Switch 1n Repository
 
 on:
   schedule:
@@ -10,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      administration: write  # ← THIS IS KEY
-
+      administration: write
     steps:
       - name: Check exam time
         id: exam
