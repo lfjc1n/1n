@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      administration: write  # ← THIS IS REQUIRED!
+      administration: write  # ← THIS IS KEY
 
     steps:
       - name: Check exam time
@@ -23,7 +23,7 @@ jobs:
             echo "public=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Switch this repository
+      - name: Switch repository
         uses: actions/github-script@v7
         with:
           script: |
@@ -33,4 +33,4 @@ jobs:
               repo: context.repo.repo,
               private: !isPublic
             });
-            console.log(`✅ Repository set to ${isPublic ? 'PUBLIC' : 'PRIVATE'}`);
+            console.log(`✅ Set to ${isPublic ? 'PUBLIC' : 'PRIVATE'}`);
